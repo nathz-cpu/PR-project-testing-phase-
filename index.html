@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNHS ICT-DROPBOX | Official</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo-area">
+            <h1>ICT DROPBOX</h1>
+            <span id="clock">00:00:00</span>
+        </div>
+        <div class="nav-links">
+            <button id="tab-repo" onclick="showTab('repo')" class="tab-btn active">📁 Repository</button>
+            <button id="tab-upload" onclick="showTab('upload')" class="tab-btn hidden">📤 Teacher Upload</button>
+        </div>
+        <div class="profile-area">
+            <div id="student-acc" class="account-chip">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Student" alt="User">
+                <span id="display-name">Guest</span>
+            </div>
+            <div id="admin-acc" class="account-chip hidden">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Teacher" alt="Admin">
+                <span>Teacher Mode</span>
+            </div>
+            <button id="logout-btn" onclick="logout()" class="logout-btn hidden">Logout</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="repo-view" class="view">
+            <div class="search-section">
+                <input type="text" id="search" oninput="searchFiles()" placeholder="Search assets (PDF, Video, Docs)...">
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>File Name</th><th>Category</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="file-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="upload-view" class="view hidden">
+            <div class="upload-panel">
+                <input type="file" id="picker" hidden onchange="updateFileName()">
+                <button class="btn-primary-large" onclick="document.getElementById('picker').click()">📁 TAP TO SELECT FILE</button>
+                <p id="file-selected-name"></p>
+                
+                <div class="category-grid">
+                    <button id="c-pdf" class="big-cat-btn active" onclick="setCat('PDF')">📄<br>PDF</button>
+                    <button id="c-doc" class="big-cat-btn" onclick="setCat('Documents')">📝<br>DOCS</button>
+                    <button id="c-vid" class="big-cat-btn" onclick="setCat('Video')">🎬<br>VIDEO</button>
+                    <button id="c-img" class="big-cat-btn" onclick="setCat('Image')">🖼️<br>IMAGE</button>
+                </div>
+                <button class="btn-login-main" onclick="upload()">POST TO REPOSITORY</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="preview-modal" class="modal-overlay hidden">
+        <button onclick="closePreview()" class="absolute-close">&times;</button>
+        <div class="preview-card">
+            <div class="preview-header"><h3 id="preview-title">Preview</h3></div>
+            <div id="preview-body" class="preview-body"></div>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-icon">🔐</div>
+            <h3>System Access</h3>
+            <p id="login-error" class="error-msg hidden">⚠️ Please login to continue.</p>
+            <div class="input-group">
+                <input type="text" id="u-mem" placeholder="Gmail or Username">
+                <input type="password" id="p-mem" placeholder="Password">
+            </div>
+            <button class="btn-login-main" onclick="login()">Enter System</button>
+            <button class="btn-forgot-style" onclick="forgotPassword()">Forgot Password?</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
