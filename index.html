@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TNHS ICT-DROPBOX | Official</title>
+    <title>TNHS ICT-DROPBOX | Final Master</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,7 +32,7 @@
     <main class="container">
         <div id="repo-view" class="view">
             <div class="search-section">
-                <input type="text" id="search" oninput="searchFiles()" placeholder="Search assets (PDF, Video, Docs)...">
+                <input type="text" id="search" oninput="searchFiles()" placeholder="Search assets...">
             </div>
             <div class="table-wrapper">
                 <table>
@@ -42,6 +42,18 @@
                     <tbody id="file-list"></tbody>
                 </table>
             </div>
+
+            <div id="admin-logs" class="hidden" style="margin-top: 50px;">
+                <h3 style="color:var(--blue); margin-bottom:15px; border-left:4px solid var(--blue); padding-left:10px;">👤 REGISTERED USER LOGS</h3>
+                <div class="table-wrapper">
+                    <table style="border: 2px solid #e2e8f0;">
+                        <thead>
+                            <tr style="background:#f1f5f9;"><th>Name</th><th>Gmail</th><th>Phone</th></tr>
+                        </thead>
+                        <tbody id="user-log-list"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <div id="upload-view" class="view hidden">
@@ -49,7 +61,6 @@
                 <input type="file" id="picker" hidden onchange="updateFileName()">
                 <button class="btn-primary-large" onclick="document.getElementById('picker').click()">📁 TAP TO SELECT FILE</button>
                 <p id="file-selected-name"></p>
-                
                 <div class="category-grid">
                     <button id="c-pdf" class="big-cat-btn active" onclick="setCat('PDF')">📄<br>PDF</button>
                     <button id="c-doc" class="big-cat-btn" onclick="setCat('Documents')">📝<br>DOCS</button>
@@ -71,11 +82,12 @@
 
     <div id="login-modal" class="modal-overlay">
         <div class="modal-card">
-            <div class="modal-icon">🔐</div>
+            <div class="modal-icon">👥</div>
             <h3>System Access</h3>
-            <p id="login-error" class="error-msg hidden">⚠️ Please login to continue.</p>
             <div class="input-group">
-                <input type="text" id="u-mem" placeholder="Gmail or Username">
+                <input type="text" id="u-mem" placeholder="Full Name">
+                <input type="email" id="g-mem" placeholder="Gmail Address">
+                <input type="tel" id="ph-mem" placeholder="Phone Number">
                 <input type="password" id="p-mem" placeholder="Password">
             </div>
             <button class="btn-login-main" onclick="login()">Enter System</button>
@@ -85,4 +97,5 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+        </html>
+        
